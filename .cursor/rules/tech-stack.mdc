@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+
+Use `context7` MCP to retrieve related docs when necessary.
+
+Tech Stack:
+
+- Chrome Extension Framework: Plasmo
+- ReAct 18, Typescript
+- Tailwind CSS: `plasmo-` prefix.
