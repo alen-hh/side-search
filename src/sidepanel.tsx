@@ -74,51 +74,25 @@ function IndexSidePanel() {
   }
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#f9fafb",
-        fontFamily: "Inter, system-ui, sans-serif"
-      }}>
+    <div className="plasmo-min-h-screen plasmo-bg-gray-50 plasmo-font-sans">
       {currentPage === "query" && (
-        <div style={{ maxWidth: "42rem", margin: "0 auto", padding: "1.5rem" }}>
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: "0.5rem",
-              boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-              border: "1px solid #e5e7eb",
-              padding: "1.5rem"
-            }}>
-            <div style={{ marginBottom: "1.5rem" }}>
-              <h1
-                style={{
-                  fontSize: "1.5rem",
-                  fontWeight: "700",
-                  color: "#111827",
-                  marginBottom: "0.5rem"
-                }}>
+        <div className="plasmo-max-w-2xl plasmo-mx-auto plasmo-p-6">
+          <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-6">
+            <div className="plasmo-mb-6">
+              <h1 className="plasmo-text-2xl plasmo-font-bold plasmo-text-gray-900 plasmo-mb-2">
                 Web Search
               </h1>
-              <p style={{ fontSize: "0.875rem", color: "#4b5563" }}>
+              <p className="plasmo-text-sm plasmo-text-gray-600">
                 Search the web using Tavily AI-powered search
               </p>
             </div>
 
-            <form
-              onSubmit={handleSearch}
-              style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+            <form onSubmit={handleSearch} className="plasmo-space-y-6">
               {/* API Key Input */}
               <div>
                 <label
                   htmlFor="apiKey"
-                  style={{
-                    display: "block",
-                    fontSize: "0.875rem",
-                    fontWeight: "500",
-                    color: "#374151",
-                    marginBottom: "0.5rem"
-                  }}>
+                  className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-700 plasmo-mb-2">
                   Tavily API Key
                 </label>
                 <input
@@ -127,22 +101,15 @@ function IndexSidePanel() {
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
                   placeholder="tvly-YOUR_API_KEY"
-                  style={{
-                    width: "100%",
-                    padding: "0.5rem 1rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "0.5rem",
-                    outline: "none",
-                    fontSize: "0.875rem"
-                  }}
+                  className="plasmo-w-full plasmo-px-4 plasmo-py-2 plasmo-border plasmo-border-gray-300 plasmo-rounded-lg focus:plasmo-ring-2 focus:plasmo-ring-blue-500 focus:plasmo-border-transparent plasmo-outline-none plasmo-transition plasmo-text-sm"
                 />
-                <p style={{ marginTop: "0.25rem", fontSize: "0.75rem", color: "#6b7280" }}>
+                <p className="plasmo-mt-1 plasmo-text-xs plasmo-text-gray-500">
                   Get your API key from{" "}
                   <a
                     href="https://tavily.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: "#2563eb", textDecoration: "underline" }}>
+                    className="plasmo-text-blue-600 hover:plasmo-underline">
                     tavily.com
                   </a>
                 </p>
@@ -152,14 +119,8 @@ function IndexSidePanel() {
               <div>
                 <label
                   htmlFor="query"
-                  style={{
-                    display: "block",
-                    fontSize: "0.875rem",
-                    fontWeight: "500",
-                    color: "#374151",
-                    marginBottom: "0.5rem"
-                  }}>
-                  Search Query <span style={{ color: "#ef4444" }}>*</span>
+                  className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-700 plasmo-mb-2">
+                  Search Query <span className="plasmo-text-red-500">*</span>
                 </label>
                 <textarea
                   id="query"
@@ -172,24 +133,9 @@ function IndexSidePanel() {
                   maxLength={1000}
                   rows={4}
                   placeholder="What would you like to search for?"
-                  style={{
-                    width: "100%",
-                    padding: "0.5rem 1rem",
-                    border: "1px solid #d1d5db",
-                    borderRadius: "0.5rem",
-                    outline: "none",
-                    fontSize: "0.875rem",
-                    resize: "none"
-                  }}
+                  className="plasmo-w-full plasmo-px-4 plasmo-py-2 plasmo-border plasmo-border-gray-300 plasmo-rounded-lg focus:plasmo-ring-2 focus:plasmo-ring-blue-500 focus:plasmo-border-transparent plasmo-outline-none plasmo-transition plasmo-resize-none plasmo-text-sm"
                 />
-                <div
-                  style={{
-                    marginTop: "0.25rem",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.75rem",
-                    color: "#6b7280"
-                  }}>
+                <div className="plasmo-mt-1 plasmo-flex plasmo-justify-between plasmo-text-xs plasmo-text-gray-500">
                   <span>Enter your search query</span>
                   <span>{query.length}/1000</span>
                 </div>
@@ -197,102 +143,62 @@ function IndexSidePanel() {
 
               {/* Topic Radio Buttons */}
               <div>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "0.875rem",
-                    fontWeight: "500",
-                    color: "#374151",
-                    marginBottom: "0.75rem"
-                  }}>
-                  Topic <span style={{ color: "#ef4444" }}>*</span>
+                <label className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-700 plasmo-mb-3">
+                  Topic <span className="plasmo-text-red-500">*</span>
                 </label>
-                <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                  <label style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
+                <div className="plasmo-space-y-3">
+                  <label className="plasmo-flex plasmo-items-center plasmo-cursor-pointer">
                     <input
                       type="radio"
                       name="topic"
                       value="general"
                       checked={topic === "general"}
                       onChange={(e) => setTopic(e.target.value as SearchTopic)}
-                      style={{ width: "1rem", height: "1rem" }}
+                      className="plasmo-w-4 plasmo-h-4 plasmo-text-blue-600 focus:plasmo-ring-2 focus:plasmo-ring-blue-500"
                     />
-                    <span style={{ marginLeft: "0.75rem", flex: "1" }}>
-                      <span
-                        style={{
-                          display: "block",
-                          fontSize: "0.875rem",
-                          fontWeight: "500",
-                          color: "#111827"
-                        }}>
+                    <span className="plasmo-ml-3 plasmo-flex-1">
+                      <span className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-900">
                         General
                       </span>
-                      <span
-                        style={{
-                          display: "block",
-                          fontSize: "0.75rem",
-                          color: "#6b7280"
-                        }}>
+                      <span className="plasmo-block plasmo-text-xs plasmo-text-gray-500">
                         Broader, general-purpose searches
                       </span>
                     </span>
                   </label>
 
-                  <label style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
+                  <label className="plasmo-flex plasmo-items-center plasmo-cursor-pointer">
                     <input
                       type="radio"
                       name="topic"
                       value="news"
                       checked={topic === "news"}
                       onChange={(e) => setTopic(e.target.value as SearchTopic)}
-                      style={{ width: "1rem", height: "1rem" }}
+                      className="plasmo-w-4 plasmo-h-4 plasmo-text-blue-600 focus:plasmo-ring-2 focus:plasmo-ring-blue-500"
                     />
-                    <span style={{ marginLeft: "0.75rem", flex: "1" }}>
-                      <span
-                        style={{
-                          display: "block",
-                          fontSize: "0.875rem",
-                          fontWeight: "500",
-                          color: "#111827"
-                        }}>
+                    <span className="plasmo-ml-3 plasmo-flex-1">
+                      <span className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-900">
                         News
                       </span>
-                      <span
-                        style={{
-                          display: "block",
-                          fontSize: "0.75rem",
-                          color: "#6b7280"
-                        }}>
+                      <span className="plasmo-block plasmo-text-xs plasmo-text-gray-500">
                         Real-time updates and current events
                       </span>
                     </span>
                   </label>
 
-                  <label style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
+                  <label className="plasmo-flex plasmo-items-center plasmo-cursor-pointer">
                     <input
                       type="radio"
                       name="topic"
                       value="finance"
                       checked={topic === "finance"}
                       onChange={(e) => setTopic(e.target.value as SearchTopic)}
-                      style={{ width: "1rem", height: "1rem" }}
+                      className="plasmo-w-4 plasmo-h-4 plasmo-text-blue-600 focus:plasmo-ring-2 focus:plasmo-ring-blue-500"
                     />
-                    <span style={{ marginLeft: "0.75rem", flex: "1" }}>
-                      <span
-                        style={{
-                          display: "block",
-                          fontSize: "0.875rem",
-                          fontWeight: "500",
-                          color: "#111827"
-                        }}>
+                    <span className="plasmo-ml-3 plasmo-flex-1">
+                      <span className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-900">
                         Finance
                       </span>
-                      <span
-                        style={{
-                          display: "block",
-                          fontSize: "0.75rem",
-                          color: "#6b7280"
-                        }}>
+                      <span className="plasmo-block plasmo-text-xs plasmo-text-gray-500">
                         Financial news and market information
                       </span>
                     </span>
@@ -302,14 +208,8 @@ function IndexSidePanel() {
 
               {/* Error Message */}
               {error && (
-                <div
-                  style={{
-                    padding: "1rem",
-                    backgroundColor: "#fef2f2",
-                    border: "1px solid #fecaca",
-                    borderRadius: "0.5rem"
-                  }}>
-                  <p style={{ fontSize: "0.875rem", color: "#991b1b" }}>{error}</p>
+                <div className="plasmo-p-4 plasmo-bg-red-50 plasmo-border plasmo-border-red-200 plasmo-rounded-lg">
+                  <p className="plasmo-text-sm plasmo-text-red-800">{error}</p>
                 </div>
               )}
 
@@ -317,41 +217,23 @@ function IndexSidePanel() {
               <button
                 type="submit"
                 disabled={isLoading}
-                style={{
-                  width: "100%",
-                  padding: "0.75rem 1rem",
-                  backgroundColor: isLoading ? "#60a5fa" : "#2563eb",
-                  color: "white",
-                  fontWeight: "500",
-                  borderRadius: "0.5rem",
-                  border: "none",
-                  cursor: isLoading ? "not-allowed" : "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "0.875rem"
-                }}>
+                className="plasmo-w-full plasmo-py-3 plasmo-px-4 plasmo-bg-blue-600 hover:plasmo-bg-blue-700 disabled:plasmo-bg-blue-400 plasmo-text-white plasmo-font-medium plasmo-rounded-lg plasmo-transition plasmo-flex plasmo-items-center plasmo-justify-center plasmo-text-sm disabled:plasmo-cursor-not-allowed">
                 {isLoading ? (
                   <>
                     <svg
-                      style={{
-                        animation: "spin 1s linear infinite",
-                        marginRight: "0.75rem",
-                        height: "1.25rem",
-                        width: "1.25rem"
-                      }}
+                      className="plasmo-animate-spin plasmo-mr-3 plasmo-h-5 plasmo-w-5"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24">
                       <circle
-                        style={{ opacity: 0.25 }}
+                        className="plasmo-opacity-25"
                         cx="12"
                         cy="12"
                         r="10"
                         stroke="currentColor"
                         strokeWidth="4"></circle>
                       <path
-                        style={{ opacity: 0.75 }}
+                        className="plasmo-opacity-75"
                         fill="currentColor"
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -367,24 +249,14 @@ function IndexSidePanel() {
       )}
 
       {currentPage === "result" && searchResponse && (
-        <div style={{ maxWidth: "56rem", margin: "0 auto", padding: "1.5rem" }}>
+        <div className="plasmo-max-w-4xl plasmo-mx-auto plasmo-p-6">
           {/* Header with Back Button */}
-          <div style={{ marginBottom: "1.5rem" }}>
+          <div className="plasmo-mb-6">
             <button
               onClick={handleBackToQuery}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                color: "#2563eb",
-                fontWeight: "500",
-                marginBottom: "1rem",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "0.875rem"
-              }}>
+              className="plasmo-flex plasmo-items-center plasmo-text-blue-600 hover:plasmo-text-blue-700 plasmo-font-medium plasmo-mb-4 plasmo-transition plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer plasmo-text-sm">
               <svg
-                style={{ width: "1.25rem", height: "1.25rem", marginRight: "0.5rem" }}
+                className="plasmo-w-5 plasmo-h-5 plasmo-mr-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24">
@@ -398,24 +270,11 @@ function IndexSidePanel() {
               New Search
             </button>
 
-            <div
-              style={{
-                backgroundColor: "white",
-                borderRadius: "0.5rem",
-                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-                border: "1px solid #e5e7eb",
-                padding: "1.5rem"
-              }}>
-              <h2
-                style={{
-                  fontSize: "1.25rem",
-                  fontWeight: "700",
-                  color: "#111827",
-                  marginBottom: "0.5rem"
-                }}>
+            <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-6">
+              <h2 className="plasmo-text-xl plasmo-font-bold plasmo-text-gray-900 plasmo-mb-2">
                 {searchResponse.query}
               </h2>
-              <p style={{ fontSize: "0.75rem", color: "#6b7280" }}>
+              <p className="plasmo-text-xs plasmo-text-gray-500">
                 Found {searchResponse.results.length} results in{" "}
                 {searchResponse.response_time.toFixed(2)}s
               </p>
@@ -424,29 +283,11 @@ function IndexSidePanel() {
 
           {/* AI-Generated Answer */}
           {searchResponse.answer && (
-            <div
-              style={{
-                marginBottom: "1.5rem",
-                background: "linear-gradient(to bottom right, #eff6ff, #eef2ff)",
-                borderRadius: "0.5rem",
-                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-                border: "1px solid #bfdbfe",
-                padding: "1.5rem"
-              }}>
-              <div style={{ display: "flex", alignItems: "flex-start", marginBottom: "0.75rem" }}>
-                <div
-                  style={{
-                    flexShrink: 0,
-                    width: "2rem",
-                    height: "2rem",
-                    backgroundColor: "#2563eb",
-                    borderRadius: "9999px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}>
+            <div className="plasmo-mb-6 plasmo-bg-gradient-to-br plasmo-from-blue-50 plasmo-to-indigo-50 plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-blue-200 plasmo-p-6">
+              <div className="plasmo-flex plasmo-items-start plasmo-mb-3">
+                <div className="plasmo-flex-shrink-0 plasmo-w-8 plasmo-h-8 plasmo-bg-blue-600 plasmo-rounded-full plasmo-flex plasmo-items-center plasmo-justify-center">
                   <svg
-                    style={{ width: "1.25rem", height: "1.25rem", color: "white" }}
+                    className="plasmo-w-5 plasmo-h-5 plasmo-text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -458,107 +299,57 @@ function IndexSidePanel() {
                     />
                   </svg>
                 </div>
-                <h3
-                  style={{
-                    marginLeft: "0.75rem",
-                    fontSize: "1.125rem",
-                    fontWeight: "600",
-                    color: "#111827"
-                  }}>
+                <h3 className="plasmo-ml-3 plasmo-text-lg plasmo-font-semibold plasmo-text-gray-900">
                   AI Answer
                 </h3>
               </div>
-              <p style={{ color: "#1f2937", lineHeight: "1.625" }}>
-                {searchResponse.answer}
-              </p>
+              <p className="plasmo-text-gray-800 plasmo-leading-relaxed">{searchResponse.answer}</p>
             </div>
           )}
 
           {/* Search Results */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <h3
-              style={{
-                fontSize: "1.125rem",
-                fontWeight: "600",
-                color: "#111827",
-                marginBottom: "1rem"
-              }}>
+          <div className="plasmo-space-y-4">
+            <h3 className="plasmo-text-lg plasmo-font-semibold plasmo-text-gray-900 plasmo-mb-4">
               Top Results
             </h3>
 
             {searchResponse.results.map((result, index) => (
               <div
                 key={index}
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: "0.5rem",
-                  boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-                  border: "1px solid #e5e7eb",
-                  padding: "1.25rem"
-                }}>
+                className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-5 hover:plasmo-shadow-md plasmo-transition">
                 <a
                   href={result.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ textDecoration: "none" }}>
-                  <div style={{ display: "flex", alignItems: "flex-start", marginBottom: "0.5rem" }}>
+                  className="plasmo-no-underline plasmo-group">
+                  <div className="plasmo-flex plasmo-items-start plasmo-mb-2">
                     {result.favicon && (
                       <img
                         src={result.favicon}
                         alt=""
-                        style={{
-                          width: "1rem",
-                          height: "1rem",
-                          marginTop: "0.25rem",
-                          marginRight: "0.5rem",
-                          flexShrink: 0
-                        }}
+                        className="plasmo-w-4 plasmo-h-4 plasmo-mt-1 plasmo-mr-2 plasmo-flex-shrink-0"
                         onError={(e) => {
                           e.currentTarget.style.display = "none"
                         }}
                       />
                     )}
-                    <h4
-                      style={{
-                        fontSize: "1.125rem",
-                        fontWeight: "600",
-                        color: "#2563eb",
-                        flex: "1"
-                      }}>
+                    <h4 className="plasmo-text-lg plasmo-font-semibold plasmo-text-blue-600 group-hover:plasmo-text-blue-700 group-hover:plasmo-underline plasmo-flex-1">
                       {result.title}
                     </h4>
                   </div>
 
-                  <p
-                    style={{
-                      fontSize: "0.75rem",
-                      color: "#6b7280",
-                      marginBottom: "0.5rem",
-                      wordBreak: "break-all"
-                    }}>
+                  <p className="plasmo-text-xs plasmo-text-gray-500 plasmo-mb-2 plasmo-break-all">
                     {result.url}
                   </p>
 
-                  <p
-                    style={{
-                      fontSize: "0.875rem",
-                      color: "#374151",
-                      lineHeight: "1.625"
-                    }}>
+                  <p className="plasmo-text-sm plasmo-text-gray-700 plasmo-leading-relaxed">
                     {result.content}
                   </p>
 
-                  <div
-                    style={{
-                      marginTop: "0.75rem",
-                      display: "flex",
-                      alignItems: "center",
-                      fontSize: "0.75rem",
-                      color: "#6b7280"
-                    }}>
-                    <span style={{ display: "flex", alignItems: "center" }}>
+                  <div className="plasmo-mt-3 plasmo-flex plasmo-items-center plasmo-text-xs plasmo-text-gray-500">
+                    <span className="plasmo-flex plasmo-items-center">
                       <svg
-                        style={{ width: "0.75rem", height: "0.75rem", marginRight: "0.25rem" }}
+                        className="plasmo-w-3 plasmo-h-3 plasmo-mr-1"
                         fill="currentColor"
                         viewBox="0 0 20 20">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -577,23 +368,9 @@ function IndexSidePanel() {
           </div>
 
           {searchResponse.results.length === 0 && (
-            <div
-              style={{
-                backgroundColor: "white",
-                borderRadius: "0.5rem",
-                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-                border: "1px solid #e5e7eb",
-                padding: "2rem",
-                textAlign: "center"
-              }}>
+            <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-8 plasmo-text-center">
               <svg
-                style={{
-                  margin: "0 auto",
-                  height: "3rem",
-                  width: "3rem",
-                  color: "#9ca3af",
-                  marginBottom: "1rem"
-                }}
+                className="plasmo-mx-auto plasmo-h-12 plasmo-w-12 plasmo-text-gray-400 plasmo-mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24">
@@ -604,17 +381,11 @@ function IndexSidePanel() {
                   d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <p style={{ color: "#4b5563" }}>No results found</p>
+              <p className="plasmo-text-gray-600">No results found</p>
             </div>
           )}
         </div>
       )}
-
-      <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   )
 }

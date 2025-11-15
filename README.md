@@ -99,7 +99,7 @@ This creates a production bundle in the `build/chrome-mv3-prod` directory, ready
 
 - **Framework**: [Plasmo](https://docs.plasmo.com/) - Chrome extension framework
 - **UI**: React 18 with TypeScript
-- **Styling**: Inline styles (avoids Tailwind prefix issues)
+- **Styling**: Tailwind CSS with `plasmo-` prefix
 - **API**: [Tavily Search API](https://tavily.com) - AI-powered search
 - **Manifest**: Chrome Extension Manifest V3
 
