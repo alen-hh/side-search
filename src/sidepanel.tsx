@@ -128,8 +128,7 @@ function IndexSidePanel() {
                   placeholder="What would you like to search for?"
                   className="plasmo-w-full plasmo-px-4 plasmo-py-2 plasmo-border plasmo-border-gray-300 plasmo-rounded-lg focus:plasmo-ring-2 focus:plasmo-ring-blue-500 focus:plasmo-border-transparent plasmo-outline-none plasmo-transition plasmo-resize-none plasmo-text-sm"
                 />
-                <div className="plasmo-mt-1 plasmo-flex plasmo-justify-between plasmo-text-xs plasmo-text-gray-500">
-                  <span>Enter your search query</span>
+                <div className="plasmo-mt-1 plasmo-flex plasmo-justify-end plasmo-text-xs plasmo-text-gray-500">
                   <span>{query.length}/1000</span>
                 </div>
               </div>
