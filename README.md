@@ -154,6 +154,7 @@ side-search/
 | **Framework** | [Plasmo 0.90.5](https://docs.plasmo.com/) - Chrome extension framework |
 | **UI Library** | React 18.2 with TypeScript 5.3 |
 | **Styling** | Tailwind CSS 3.4.1 with `plasmo-` prefix |
+| **Icons** | [Heroicons](https://heroicons.com) - Beautiful hand-crafted SVG icons |
 | **API** | [Tavily Search API](https://tavily.com) |
 | **Manifest** | Chrome Extension Manifest V3 |
 

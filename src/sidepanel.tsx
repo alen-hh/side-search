@@ -337,7 +337,7 @@ function IndexSidePanel() {
                   </div>
 
                   {/* Content snippet */}
-                  <p className="plasmo-text-sm plasmo-text-gray-600 plasmo-leading-relaxed plasmo-ml-6">
+                  <p className="plasmo-text-sm plasmo-text-gray-600 plasmo-leading-relaxed plasmo-ml-6 plasmo-break-words plasmo-overflow-hidden">
                     {result.content.length > 100
                       ? `${result.content.substring(0, 100)}...`
                       : result.content}
