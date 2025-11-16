@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Cog6ToothIcon, ArrowLeftIcon, BoltIcon, GlobeAltIcon, EyeIcon, FaceFrownIcon } from "@heroicons/react/24/outline"
 import type { SearchTopic, SearchResponse } from "~types/tavily"
 import { searchWithTavily } from "~utils/tavily"
 import "~style.css"
@@ -86,24 +87,7 @@ function IndexSidePanel() {
                   onClick={() => chrome.runtime.openOptionsPage()}
                   className="plasmo-flex plasmo-items-center plasmo-gap-1 plasmo-px-3 plasmo-py-1.5 plasmo-text-sm plasmo-text-gray-600 hover:plasmo-text-gray-900 hover:plasmo-bg-gray-100 plasmo-rounded-md plasmo-transition plasmo-bg-transparent plasmo-border plasmo-border-gray-300 plasmo-cursor-pointer"
                   title="Open Settings">
-                  <svg
-                    className="plasmo-w-4 plasmo-h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
+                  <Cog6ToothIcon className="plasmo-w-4 plasmo-h-4" />
                 </button>
               </div>
               <p className="plasmo-text-sm plasmo-text-gray-600">
@@ -277,18 +261,7 @@ function IndexSidePanel() {
               <button
                 onClick={handleBackToQuery}
                 className="plasmo-flex plasmo-items-center plasmo-text-blue-600 hover:plasmo-text-blue-700 plasmo-font-medium plasmo-transition plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer plasmo-text-sm">
-                <svg
-                  className="plasmo-w-5 plasmo-h-5 plasmo-mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
-                </svg>
+                <ArrowLeftIcon className="plasmo-w-5 plasmo-h-5 plasmo-mr-2" />
                 New Search
               </button>
 
@@ -310,18 +283,7 @@ function IndexSidePanel() {
             <div className="plasmo-mb-6 plasmo-bg-gradient-to-br plasmo-from-blue-50 plasmo-to-indigo-50 plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-blue-200 plasmo-p-6">
               <div className="plasmo-flex plasmo-items-start plasmo-mb-3">
                 <div className="plasmo-flex-shrink-0 plasmo-w-8 plasmo-h-8 plasmo-bg-blue-600 plasmo-rounded-full plasmo-flex plasmo-items-center plasmo-justify-center">
-                  <svg
-                    className="plasmo-w-5 plasmo-h-5 plasmo-text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
+                  <BoltIcon className="plasmo-w-5 plasmo-h-5 plasmo-text-white" />
                 </div>
                 <h3 className="plasmo-ml-3 plasmo-text-lg plasmo-font-semibold plasmo-text-gray-900">
                   AI Answer
@@ -366,18 +328,7 @@ function IndexSidePanel() {
                           }}
                         />
                       ) : (
-                        <svg
-                          className="plasmo-w-full plasmo-h-full plasmo-text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24">
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
+                        <GlobeAltIcon className="plasmo-w-full plasmo-h-full plasmo-text-gray-400" />
                       )}
                     </div>
                     <h4 className="plasmo-text-base plasmo-font-semibold plasmo-text-blue-600 group-hover:plasmo-text-blue-700 group-hover:plasmo-underline plasmo-flex-1 plasmo-leading-snug">
@@ -395,17 +346,7 @@ function IndexSidePanel() {
                   {/* Relevance score */}
                   <div className="plasmo-mt-2 plasmo-ml-6">
                     <span className="plasmo-inline-flex plasmo-items-center plasmo-text-xs plasmo-text-gray-500">
-                      <svg
-                        className="plasmo-w-3 plasmo-h-3 plasmo-mr-1"
-                        fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                        <path
-                          fillRule="evenodd"
-                          d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      <EyeIcon className="plasmo-w-3 plasmo-h-3 plasmo-mr-1" />
                       Relevance: {(result.score * 100).toFixed(0)}%
                     </span>
                   </div>
@@ -417,18 +358,7 @@ function IndexSidePanel() {
 
           {searchResponse.results.length === 0 && (
             <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-8 plasmo-text-center">
-              <svg
-                className="plasmo-mx-auto plasmo-h-12 plasmo-w-12 plasmo-text-gray-400 plasmo-mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+              <FaceFrownIcon className="plasmo-mx-auto plasmo-h-12 plasmo-w-12 plasmo-text-gray-400 plasmo-mb-4" />
               <p className="plasmo-text-gray-600">No results found</p>
             </div>
           )}
