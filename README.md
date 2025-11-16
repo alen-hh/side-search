@@ -46,7 +46,7 @@ A modern Chrome extension that brings AI-powered web search directly to your bro
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/side-search.git
+git clone https://github.com/alen-hh/side-search.git
 cd side-search
 ```
 
@@ -301,7 +301,5 @@ If you find this project helpful, please consider giving it a star! ⭐
 <div align="center">
 
 Made with ❤️ using Plasmo and Tavily
-
-[Report Bug](https://github.com/yourusername/side-search/issues) • [Request Feature](https://github.com/yourusername/side-search/issues)
 
 </div>
