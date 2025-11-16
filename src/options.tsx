@@ -141,21 +141,23 @@ function OptionsIndex() {
               About Tavily API
             </h3>
             <div className="plasmo-space-y-2 plasmo-text-sm plasmo-text-gray-600">
-              <p>
-                • Tavily provides AI-powered search results with generated answers
-              </p>
-              <p>• Free tier includes monthly API credits</p>
-              <p>• Your API key is stored locally and never shared</p>
-              <p>
-                • Learn more at{" "}
-                <a
-                  href="https://docs.tavily.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="plasmo-text-blue-600 hover:plasmo-underline">
-                  docs.tavily.com
-                </a>
-              </p>
+              <ul className="plasmo-list-disc plasmo-list-inside plasmo-space-y-2">
+                <li>
+                  Tavily provides AI-powered search results with generated answers
+                </li>
+                <li>Free tier includes monthly API credits</li>
+                <li>Your API key is stored locally and never shared</li>
+                <li>
+                  Learn more at{" "}
+                  <a
+                    href="https://docs.tavily.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="plasmo-text-blue-600 hover:plasmo-underline">
+                    docs.tavily.com
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
