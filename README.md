@@ -54,15 +54,19 @@ npm run dev
 ### Usage
 
 1. Click the extension icon in your browser toolbar to open the side panel
-2. Enter your Tavily API key (if not set via environment variable)
-3. Enter your search query (up to 1000 characters)
-4. Select a search topic:
+2. If you haven't configured your API key yet, click "Configure it now" to open settings
+3. In the Options page:
+   - Enter your Tavily API key (get one free at [tavily.com](https://tavily.com))
+   - Click "Save API Key"
+4. Return to the side panel
+5. Enter your search query (up to 1000 characters)
+6. Select a search topic:
    - **General**: Broader, general-purpose searches
    - **News**: Real-time updates and current events
    - **Finance**: Financial news and market information
-5. Click "Search" to get AI-powered results
-6. View the AI-generated answer and browse top 10 search results
-7. Click "New Search" to perform another search
+7. Click "Search" to get AI-powered results
+8. View the AI-generated answer and browse top 10 search results
+9. Click "New Search" to perform another search
 
 ## Project Structure
 
@@ -71,6 +75,7 @@ side-search/
 ├── src/
 │   ├── background.ts          # Background service worker
 │   ├── sidepanel.tsx          # Main side panel UI component
+│   ├── options.tsx            # Options/settings page for API key
 │   ├── content.tsx            # Content script (if needed)
 │   ├── style.css              # Global styles
 │   ├── types/

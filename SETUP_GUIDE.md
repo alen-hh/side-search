@@ -27,24 +27,49 @@ npm run dev
 ### 4. Using the Extension
 
 1. **Click the extension icon** - This will open the side panel
-2. **Enter your Tavily API key**:
-   - Get one free at [tavily.com](https://tavily.com)
-   - The key will be saved locally for future use
-3. **Enter a search query** (up to 1000 characters)
-4. **Select a topic**:
+2. **Configure your API key** (first time only):
+   - You'll see a warning: "⚠️ No API key configured"
+   - Click **"Configure it now"** to open the Options page
+   - Enter your Tavily API key (get one free at [tavily.com](https://tavily.com))
+   - Click **"Save API Key"**
+   - The key is saved locally in Chrome storage
+3. **Return to the side panel** (close and reopen if needed)
+4. **Enter a search query** (up to 1000 characters)
+5. **Select a topic**:
    - **General**: Broader searches (default)
    - **News**: Current events and news
    - **Finance**: Financial and market information
-5. **Click Search** to get results
-6. **View results**:
+6. **Click Search** to get results
+7. **View results**:
    - AI-generated answer summary
    - Top 10 relevant search results with relevance scores
    - Click any result to open in a new tab
 
+## Accessing the Options Page
+
+There are multiple ways to access the Options/Settings page:
+
+1. **From the side panel**: Click "Configure it now" in the warning banner
+2. **From Chrome extensions**: 
+   - Go to `chrome://extensions/`
+   - Find "Side search"
+   - Click "Details"
+   - Click "Extension options"
+3. **Right-click the extension icon**: Select "Options"
+
 ## Features
 
+### Options Page (Settings)
+- API key configuration
+- Secure local storage
+- Save/Clear functionality
+- Visual feedback on save
+- Information about Tavily API
+- Direct links to Tavily documentation
+
 ### Query Page
-- API key input (saved to Chrome storage)
+- Warning banner when API key not configured
+- Quick link to open Options page
 - Search query input with character counter (max 1000)
 - Topic selection via radio buttons
 - Form validation and error handling
@@ -98,6 +123,7 @@ The extension uses Chrome's `storage.local` API to:
 src/
 ├── background.ts          # Handles icon click to open side panel
 ├── sidepanel.tsx          # Main UI component (Query + Result pages)
+├── options.tsx            # Options/Settings page for API key configuration
 ├── content.tsx            # Content script (unused for now)
 ├── style.css              # Global styles
 ├── types/

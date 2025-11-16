@@ -38,12 +38,11 @@ function IndexSidePanel() {
     }
 
     if (!apiKey.trim()) {
-      setError("Please enter your Tavily API key")
+      setError(
+        "Please configure your Tavily API key in the extension options"
+      )
       return
     }
-
-    // Save API key to Chrome storage for future use
-    chrome.storage.local.set({ tavilyApiKey: apiKey })
 
     setIsLoading(true)
 
@@ -85,36 +84,21 @@ function IndexSidePanel() {
               <p className="plasmo-text-sm plasmo-text-gray-600">
                 Search the web using Tavily AI-powered search
               </p>
+              {!apiKey && (
+                <div className="plasmo-mt-3 plasmo-p-3 plasmo-bg-yellow-50 plasmo-border plasmo-border-yellow-200 plasmo-rounded-lg">
+                  <p className="plasmo-text-sm plasmo-text-yellow-800">
+                    ⚠️ No API key configured.{" "}
+                    <button
+                      onClick={() => chrome.runtime.openOptionsPage()}
+                      className="plasmo-text-yellow-900 plasmo-font-medium plasmo-underline hover:plasmo-text-yellow-700 plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer">
+                      Configure it now
+                    </button>
+                  </p>
+                </div>
+              )}
             </div>
 
             <form onSubmit={handleSearch} className="plasmo-space-y-6">
-              {/* API Key Input */}
-              <div>
-                <label
-                  htmlFor="apiKey"
-                  className="plasmo-block plasmo-text-sm plasmo-font-medium plasmo-text-gray-700 plasmo-mb-2">
-                  Tavily API Key
-                </label>
-                <input
-                  type="password"
-                  id="apiKey"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="tvly-YOUR_API_KEY"
-                  className="plasmo-w-full plasmo-px-4 plasmo-py-2 plasmo-border plasmo-border-gray-300 plasmo-rounded-lg focus:plasmo-ring-2 focus:plasmo-ring-blue-500 focus:plasmo-border-transparent plasmo-outline-none plasmo-transition plasmo-text-sm"
-                />
-                <p className="plasmo-mt-1 plasmo-text-xs plasmo-text-gray-500">
-                  Get your API key from{" "}
-                  <a
-                    href="https://tavily.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="plasmo-text-blue-600 hover:plasmo-underline">
-                    tavily.com
-                  </a>
-                </p>
-              </div>
-
               {/* Query Input */}
               <div>
                 <label
@@ -209,7 +193,19 @@ function IndexSidePanel() {
               {/* Error Message */}
               {error && (
                 <div className="plasmo-p-4 plasmo-bg-red-50 plasmo-border plasmo-border-red-200 plasmo-rounded-lg">
-                  <p className="plasmo-text-sm plasmo-text-red-800">{error}</p>
+                  <p className="plasmo-text-sm plasmo-text-red-800">
+                    {error}
+                    {error.includes("API key") && (
+                      <>
+                        {" "}
+                        <button
+                          onClick={() => chrome.runtime.openOptionsPage()}
+                          className="plasmo-text-red-900 plasmo-font-medium plasmo-underline hover:plasmo-text-red-700 plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer">
+                          Open Settings
+                        </button>
+                      </>
+                    )}
+                  </p>
                 </div>
               )}
 
@@ -267,7 +263,7 @@ function IndexSidePanel() {
                   d="M10 19l-7-7m0 0l7-7m-7 7h18"
                 />
               </svg>
-              New Search
+              Search
             </button>
 
             <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-6">
@@ -303,51 +299,74 @@ function IndexSidePanel() {
                   AI Answer
                 </h3>
               </div>
-              <p className="plasmo-text-gray-800 plasmo-leading-relaxed">{searchResponse.answer}</p>
+              <p className="plasmo-text-base plasmo-text-gray-800 plasmo-leading-relaxed">{searchResponse.answer}</p>
             </div>
           )}
 
           {/* Search Results */}
-          <div className="plasmo-space-y-4">
-            <h3 className="plasmo-text-lg plasmo-font-semibold plasmo-text-gray-900 plasmo-mb-4">
+          <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200">
+            <h3 className="plasmo-text-lg plasmo-font-semibold plasmo-text-gray-900 plasmo-px-4 plasmo-py-4 plasmo-border-b plasmo-border-gray-200">
               Top Results
             </h3>
+
+            <div className="plasmo-divide-y plasmo-divide-gray-200">
 
             {searchResponse.results.map((result, index) => (
               <div
                 key={index}
-                className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-5 hover:plasmo-shadow-md plasmo-transition">
-                <a
-                  href={result.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="plasmo-no-underline plasmo-group">
-                  <div className="plasmo-flex plasmo-items-start plasmo-mb-2">
-                    {result.favicon && (
-                      <img
-                        src={result.favicon}
-                        alt=""
-                        className="plasmo-w-4 plasmo-h-4 plasmo-mt-1 plasmo-mr-2 plasmo-flex-shrink-0"
-                        onError={(e) => {
-                          e.currentTarget.style.display = "none"
-                        }}
-                      />
-                    )}
-                    <h4 className="plasmo-text-lg plasmo-font-semibold plasmo-text-blue-600 group-hover:plasmo-text-blue-700 group-hover:plasmo-underline plasmo-flex-1">
-                      {result.title}
+                className="plasmo-py-4 plasmo-px-4 hover:plasmo-bg-gray-50 plasmo-transition">
+                <div
+                  className="plasmo-no-underline plasmo-group plasmo-block">
+                  {/* Title with favicon */}
+                  <div className="plasmo-flex plasmo-items-start plasmo-gap-2 plasmo-mb-1">
+                    <div className="plasmo-w-4 plasmo-h-4 plasmo-mt-0.5 plasmo-flex-shrink-0">
+                      {result.favicon ? (
+                        <img
+                          src={result.favicon}
+                          alt=""
+                          className="plasmo-w-full plasmo-h-full plasmo-rounded-sm"
+                          onError={(e) => {
+                            // Replace with placeholder SVG on error
+                            const parent = e.currentTarget.parentElement
+                            if (parent) {
+                              parent.innerHTML = `
+                                <svg class="plasmo-w-full plasmo-h-full plasmo-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                              `
+                            }
+                          }}
+                        />
+                      ) : (
+                        <svg
+                          className="plasmo-w-full plasmo-h-full plasmo-text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                    <h4 className="plasmo-text-base plasmo-font-semibold plasmo-text-blue-600 group-hover:plasmo-text-blue-700 group-hover:plasmo-underline plasmo-flex-1 plasmo-leading-snug">
+                      <a href={result.url} target="_blank" rel="noopener noreferrer">{result.title}</a>
                     </h4>
                   </div>
 
-                  <p className="plasmo-text-xs plasmo-text-gray-500 plasmo-mb-2 plasmo-break-all">
-                    {result.url}
+                  {/* Content snippet */}
+                  <p className="plasmo-text-sm plasmo-text-gray-600 plasmo-leading-relaxed plasmo-ml-6">
+                    {result.content.length > 100
+                      ? `${result.content.substring(0, 100)}...`
+                      : result.content}
                   </p>
 
-                  <p className="plasmo-text-sm plasmo-text-gray-700 plasmo-leading-relaxed">
-                    {result.content}
-                  </p>
-
-                  <div className="plasmo-mt-3 plasmo-flex plasmo-items-center plasmo-text-xs plasmo-text-gray-500">
-                    <span className="plasmo-flex plasmo-items-center">
+                  {/* Relevance score */}
+                  <div className="plasmo-mt-2 plasmo-ml-6">
+                    <span className="plasmo-inline-flex plasmo-items-center plasmo-text-xs plasmo-text-gray-500">
                       <svg
                         className="plasmo-w-3 plasmo-h-3 plasmo-mr-1"
                         fill="currentColor"
@@ -362,9 +381,10 @@ function IndexSidePanel() {
                       Relevance: {(result.score * 100).toFixed(0)}%
                     </span>
                   </div>
-                </a>
+                </div>
               </div>
             ))}
+            </div>
           </div>
 
           {searchResponse.results.length === 0 && (
