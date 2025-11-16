@@ -29,6 +29,14 @@ function IndexSidePanel() {
     })
   }, [])
 
+  const handleOpenOptions = () => {
+    chrome.runtime.openOptionsPage(() => {
+      if (chrome.runtime.lastError) {
+        console.error('Error opening options page:', chrome.runtime.lastError)
+      }
+    })
+  }
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
@@ -84,7 +92,7 @@ function IndexSidePanel() {
                   Web Search
                 </h1>
                 <button
-                  onClick={() => chrome.runtime.openOptionsPage()}
+                  onClick={handleOpenOptions}
                   className="plasmo-flex plasmo-items-center plasmo-gap-1 plasmo-px-3 plasmo-py-1.5 plasmo-text-sm plasmo-text-gray-600 hover:plasmo-text-gray-900 hover:plasmo-bg-gray-100 plasmo-rounded-md plasmo-transition plasmo-bg-transparent plasmo-border plasmo-border-gray-300 plasmo-cursor-pointer"
                   title="Open Settings">
                   <Cog6ToothIcon className="plasmo-w-4 plasmo-h-4" />
@@ -98,7 +106,7 @@ function IndexSidePanel() {
                   <p className="plasmo-text-sm plasmo-text-yellow-800">
                     ⚠️ No API key configured.{" "}
                     <button
-                      onClick={() => chrome.runtime.openOptionsPage()}
+                      onClick={handleOpenOptions}
                       className="plasmo-text-yellow-900 plasmo-font-medium plasmo-underline hover:plasmo-text-yellow-700 plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer">
                       Configure it now
                     </button>
@@ -207,7 +215,8 @@ function IndexSidePanel() {
                       <>
                         {" "}
                         <button
-                          onClick={() => chrome.runtime.openOptionsPage()}
+                          type="button"
+                          onClick={handleOpenOptions}
                           className="plasmo-text-red-900 plasmo-font-medium plasmo-underline hover:plasmo-text-red-700 plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer">
                           Open Settings
                         </button>
