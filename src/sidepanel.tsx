@@ -78,9 +78,34 @@ function IndexSidePanel() {
         <div className="plasmo-max-w-2xl plasmo-mx-auto plasmo-p-6">
           <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-6">
             <div className="plasmo-mb-6">
-              <h1 className="plasmo-text-2xl plasmo-font-bold plasmo-text-gray-900 plasmo-mb-2">
-                Web Search
-              </h1>
+              <div className="plasmo-flex plasmo-items-center plasmo-justify-between plasmo-mb-2">
+                <h1 className="plasmo-text-2xl plasmo-font-bold plasmo-text-gray-900">
+                  Web Search
+                </h1>
+                <button
+                  onClick={() => chrome.runtime.openOptionsPage()}
+                  className="plasmo-flex plasmo-items-center plasmo-gap-1 plasmo-px-3 plasmo-py-1.5 plasmo-text-sm plasmo-text-gray-600 hover:plasmo-text-gray-900 hover:plasmo-bg-gray-100 plasmo-rounded-md plasmo-transition plasmo-bg-transparent plasmo-border plasmo-border-gray-300 plasmo-cursor-pointer"
+                  title="Open Settings">
+                  <svg
+                    className="plasmo-w-4 plasmo-h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
               <p className="plasmo-text-sm plasmo-text-gray-600">
                 Search the web using Tavily AI-powered search
               </p>
@@ -248,23 +273,26 @@ function IndexSidePanel() {
         <div className="plasmo-max-w-4xl plasmo-mx-auto plasmo-p-6">
           {/* Header with Back Button */}
           <div className="plasmo-mb-6">
-            <button
-              onClick={handleBackToQuery}
-              className="plasmo-flex plasmo-items-center plasmo-text-blue-600 hover:plasmo-text-blue-700 plasmo-font-medium plasmo-mb-4 plasmo-transition plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer plasmo-text-sm">
-              <svg
-                className="plasmo-w-5 plasmo-h-5 plasmo-mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-              Search
-            </button>
+            <div className="plasmo-flex plasmo-items-center plasmo-justify-between plasmo-mb-4">
+              <button
+                onClick={handleBackToQuery}
+                className="plasmo-flex plasmo-items-center plasmo-text-blue-600 hover:plasmo-text-blue-700 plasmo-font-medium plasmo-transition plasmo-bg-transparent plasmo-border-none plasmo-cursor-pointer plasmo-text-sm">
+                <svg
+                  className="plasmo-w-5 plasmo-h-5 plasmo-mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+                New Search
+              </button>
+
+            </div>
 
             <div className="plasmo-bg-white plasmo-rounded-lg plasmo-shadow-sm plasmo-border plasmo-border-gray-200 plasmo-p-6">
               <h2 className="plasmo-text-xl plasmo-font-bold plasmo-text-gray-900 plasmo-mb-2">

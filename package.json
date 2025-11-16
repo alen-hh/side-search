@@ -2,7 +2,7 @@
   "name": "side-search",
   "displayName": "Side Search",
   "version": "0.0.1",
-  "description": "Quick web search at the side panel.",
+  "description": "A modern Chrome extension that brings AI-powered web search directly to your browser's side panel using the Tavily Search API.",
   "author": "Alen Hu <huhaoyue0220@126.com>",
   "scripts": {
     "dev": "plasmo dev",
